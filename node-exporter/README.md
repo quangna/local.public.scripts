@@ -12,3 +12,7 @@ Automatically download [node_exporter](https://github.com/prometheus/node_export
 ```bash
 curl -sSL https://cloudesire.github.io/node-exporter-installer/install.sh | sudo sh
 ```
+
+```bash
+curl -sSL https://raw.githubusercontent.com/quangna/local.public.scripts/master/node-exporter/install.sh | sudo sh
+```

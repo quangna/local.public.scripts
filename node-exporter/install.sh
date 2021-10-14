@@ -43,7 +43,7 @@ StartLimitInterval=0
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/node_exporter \
+ExecStart=/opt/node_exporter/node_exporter \
     --collector.systemd \
     --collector.textfile \
     --collector.textfile.directory=/var/lib/node_exporter \
