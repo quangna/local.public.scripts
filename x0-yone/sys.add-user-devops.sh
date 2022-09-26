@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-sudo
+sudo true
 
 user=devops
 sshkey="# Added by DevOps
