@@ -9,8 +9,8 @@ if getent passwd $user > /dev/null 2>&1; then
     echo "==> THIS USER EXISTS!!!!"
 else
     echo "==> THIS USER DOES NOT EXISTS =>> Initial user ..."
-    /usr/sbin/useradd -m $user -s /bin/bash
-    /bin/mkdir /home/$user/.ssh
+    sudo /usr/sbin/useradd -m $user -s /bin/bash
+    sudo /bin/mkdir /home/$user/.ssh
     ## Add sshkey
     grep -rl "$sshkey" /home/$user/.ssh/authorized_keys
     if [ $? != 0 ]
@@ -18,12 +18,12 @@ else
         echo "$sshkey" >> /home/$user/.ssh/authorized_keys
     fi
     ## Add sudo perms
-    grep -rl "$user" /etc/sudoers
+    sudo grep -rl "$user" /etc/sudoers
     if [ $? != 0 ]
     then
-        echo "$user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+        sudo echo "$user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
     fi
-    chown -R $user.$user /home/$user
-    cat /home/$user/.ssh/authorized_keys
+    sudo chown -R $user.$user /home/$user
+    sudo cat /home/$user/.ssh/authorized_keys
     echo "DONE !!"
 fi
