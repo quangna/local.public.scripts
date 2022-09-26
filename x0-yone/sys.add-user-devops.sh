@@ -15,13 +15,13 @@ else
     grep -rl "$sshkey" /home/$user/.ssh/authorized_keys
     if [ $? != 0 ]
     then
-        echo "$sshkey" >> /home/$user/.ssh/authorized_keys
+        echo "$sshkey" | sudo tee --append /home/$user/.ssh/authorized_keys > /dev/null
     fi
     ## Add sudo perms
     sudo grep -rl "$user" /etc/sudoers
     if [ $? != 0 ]
     then
-        sudo echo "$user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+        echo "$user ALL=(ALL) NOPASSWD: ALL" | sudo tee --append /etc/sudoers > /dev/null
     fi
     sudo chown -R $user.$user /home/$user
     sudo cat /home/$user/.ssh/authorized_keys
